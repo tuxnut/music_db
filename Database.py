@@ -1,10 +1,11 @@
 import psycopg2
+import psycopg2.extras
 
 class Database():
 
     def __init__(self):
         self.conn = psycopg2.connect(database='Music', user='postgres', host='localhost', password='', port=5432)
-        self.cur = self.conn.cursor()
+        self.cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         self.cur.execute("SELECT version()")
         res = self.cur.fetchall()
         print(res)
@@ -25,3 +26,7 @@ class Database():
 
 if __name__ == "__main__":
     database = Database()
+    rows = database.getAllComposers()
+    row = rows[0]
+    for key, value in row.items():
+        print(key, value)
