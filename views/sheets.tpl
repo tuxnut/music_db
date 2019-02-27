@@ -2,16 +2,16 @@
 
 <h1>Partitions</h1>
 
-<!-- Button to hide the form by default -->
+<!-- Button to toggle the form -->
 <button onclick="toggleForm()">Ajouter une partition</button>
-<div style="display:none" id="pieceForm">
-    % include('pieceForm.tpl', composersArray=composersArray)
+<div style="display:none" id="sheetForm">
+    % include('sheetForm.tpl', composersArray=composersArray)
 </div>
 <br>
 <hr>
 <br>
 <div class="containerTable">
-    <table id="pieceTable">
+    <table id="sheetTable">
         <tr>
             <th>Titre</th>
             <th>Compositeur</th>
@@ -21,7 +21,7 @@
             <th>Appréciation</th>
             <th>Commentaires</th>
         </tr>
-        % for item in piecesArray:
+        % for item in musicSheetsArray:
             <tr>
                 <td>{{item['title']}}</td>
                 <td>{{item['commonname']}}</td>
@@ -37,7 +37,7 @@
 
 <script>
     function toggleForm() {
-        const element = document.getElementById("pieceForm");
+        const element = document.getElementById("sheetForm");
         if (element.style.display === "none") {
             element.style.display = "block";
         } else {
