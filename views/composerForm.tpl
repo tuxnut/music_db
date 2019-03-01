@@ -6,7 +6,7 @@
     <input type="text" id="fullname" name="fullname"><br>
 
     <label for="dateOfBirth">Date de naissance: </label>
-    <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+    <input type="date" id="dateOfBirth" name="dateOfBirth">
     
     <label for="dateOfDeath">Date de décès: </label>
     <input type="date" id="dateOfDeath" name="dateOfDeath"><br>

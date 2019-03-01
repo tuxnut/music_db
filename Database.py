@@ -2,35 +2,63 @@ import psycopg2
 import psycopg2.extras
 
 class Database():
-
     def __init__(self):
+        # Booleans to query database
+        self.updateComposerTable = True
+        self.updateSheetTable = True
+        # Cache dictionnaries for tables
+        self.musicSheetCache = {}
+        self.composerCache = {}
+        # Connection and Cursor provided by psycopg2
         self.conn = psycopg2.connect(database='Music', user='postgres', host='localhost', password='', port=5432)
+        self.conn.set_session(autocommit=True)
         self.cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor) # NamedTupleCursor
         self.cur.execute("SELECT version()")
         res = self.cur.fetchall()
         print(res)
     
     def getAllMusicSheet(self, column=''):
-        if (not column):
-            self.cur.execute("""SELECT piece_id, title, c.commonname, type, dateofcreation, difficulty, appreciation, comments 
-            FROM piece 
-            LEFT JOIN composer AS c 
-            ON piece.composer_id = c.composer_id""")
-        else:
-            self.cur.execute("SELECT " + column + " FROM piece")
-        rows = self.cur.fetchall()
-        return rows
+        # No need to query database if no insert / update was performed since last select
+        if (self.updateSheetTable):
+            print("update sheet Table") # for debug purpose
+            if (not column):
+                self.cur.execute("""SELECT piece_id, title, c.commonname, type, dateofcreation, difficulty, appreciation, comments 
+                FROM piece 
+                LEFT JOIN composer AS c 
+                ON piece.composer_id = c.composer_id""")
+            else:
+                self.cur.execute("SELECT " + column + " FROM piece")
+            self.musicSheetCache = self.cur.fetchall()
+            self.updateSheetTable = False
+        return self.musicSheetCache
     
     def insertMusicSheet(self, musicSheet):
-        self.cur.execute("""INSERT INTO piece (title, composer_id, type, dateofcreation, difficulty, appreciation, comments)
-        VALUES (%s, %s, %s, %s, %s, %s, %s);
-        """, musicSheet.title, musicSheet.composer_id, musicSheet.type, musicSheet.dateofcreation, musicSheet.difficulty, musicSheet.appreciation, musicSheet.comments)
+        print(musicSheet)
+        # Need the composer_id for the FK_composer
+        composer = list(filter(lambda el: el['commonname'] == musicSheet['composer']), self.composerCache)[0]
+        musicSheet['composer'] = composer['composer_id']
+        print(musicSheet)
+        # self.cur.execute("""INSERT INTO piece (title, composer_id, type, dateofcreation, difficulty, appreciation, comments)
+        # VALUES (%(title)s, %(composer)s, %(type)s, %(dateofcreation)s, %(difficulty)s, %(appreciation)s, %(comments)s);""",
+        # musicSheet)
+        self.cupdateSheetTable = True
  
     def getAllComposers(self, column='*'):
-        self.cur.execute("SELECT " + column + " FROM composer")
-        rows = self.cur.fetchall()
-        return rows
-    
+        # No need to query database if no insert / update was performed since last select
+        if (self.updateComposerTable):
+            print("update composer Table") # for debug purpose
+            self.cur.execute("SELECT " + column + " FROM composer")
+            self.composerCache = self.cur.fetchall()
+            self.updateComposerTable = False
+        return self.composerCache
+
+    def insertComposer(self, composer):
+        print(composer)
+        # self.cur.execute("""INSERT INTO composer (commmonname, fullname, dateofbirth, dateofdeath, nationality, style)
+        # VALUES (%(commonname)s, %(fullname)s, %(dateofbirth)s, %(dateofdeath)s, %(nationality)s, %(style)s);""",
+        # composer)
+        self.updateComposerTable = True
+
     def __del__(self):
         self.cur.close()
         self.conn.close()
@@ -38,7 +66,4 @@ class Database():
 
 if __name__ == "__main__":
     database = Database()
-    rows = database.getAllComposers()
-    row = rows[0]
-    for key, value in row.items():
-        print(key, value)
+    rows = database.getAllMusicSheet()

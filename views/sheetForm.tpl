@@ -20,7 +20,7 @@
     <input type="range" min="1" max="5" id="difficulty" name="difficulty">
 
     <label for="appreciation">Appréciation: </label>
-    <input type="range" min="1" max="5" id="appreciation" name="appreciation">
+    <input type="range" min="1" max="5" id="appreciation" name="appreciation"><br><br>
 
     <label for="comments">Commentaires: </label>
     <input type="text" id="comments" name="comments"><br>
