@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -8,11 +9,11 @@
 
     <h1>Partitions</h1>
 
-    <input type="text" id="search_bar" name="search" placeholder="Search.."><br>
+    <input type="text" id="search_bar" name="search" placeholder="Search.." oninput="sortByInput()"><br>
 
     <!-- Button to toggle the form -->
-    <button onclick="toggleForm()">Ajouter une partition</button>
-    <div style="display:none" id="sheetForm" class="formContainer">
+    <button onclick="toggleForm()"><span>Ajouter une partition</span></button>
+    <div style="display:none" id="form" class="formContainer">
         % include('sheetForm.tpl', composersArray=composersArray)
     </div>
     <br>
@@ -21,13 +22,13 @@
     <div class="containerTable">
         <table id="sheetTable">
             <tr>
-                <th>Titre</th>
-                <th>Compositeur</th>
-                <th>Type</th>
-                <th>Date de composition</th>
-                <th>Difficulté</th>
-                <th>Appréciation</th>
-                <th>Commentaires</th>
+                <th onclick="sortTable(0)">Titre</th>
+                <th onclick="sortTable(1)">Compositeur</th>
+                <th onclick="sortTable(2)">Type</th>
+                <th onclick="sortTable(3)">Date de composition</th>
+                <th onclick="sortTable(4)">Difficulté</th>
+                <th onclick="sortTable(5)">Appréciation</th>
+                <th onclick="sortTable(6)">Commentaires</th>
             </tr>
             % for item in musicSheetsArray:
                 <tr>
@@ -47,16 +48,7 @@
         </table>
     </div>
 
-    <script>
-        function toggleForm() {
-            const element = document.getElementById("sheetForm");
-            if (element.style.display === "none") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

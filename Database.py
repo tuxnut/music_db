@@ -33,14 +33,11 @@ class Database():
         return self.musicSheetCache
     
     def insertMusicSheet(self, musicSheet):
-        print(musicSheet)
         # Need the composer_id for the FK_composer
-        composer = list(filter(lambda el: el['commonname'] == musicSheet['composer']), self.composerCache)[0]
-        musicSheet['composer'] = composer['composer_id']
         print(musicSheet)
-        # self.cur.execute("""INSERT INTO piece (title, composer_id, type, dateofcreation, difficulty, appreciation, comments)
-        # VALUES (%(title)s, %(composer)s, %(type)s, %(dateofcreation)s, %(difficulty)s, %(appreciation)s, %(comments)s);""",
-        # musicSheet)
+        self.cur.execute("""INSERT INTO piece (title, composer_id, type, dateofcreation, difficulty, appreciation, comments)
+        VALUES (%(title)s, %(composer)s, %(type)s, %(dateofcreation)s, %(difficulty)s, %(appreciation)s, %(comments)s);""",
+        musicSheet)
         self.cupdateSheetTable = True
  
     def getAllComposers(self, column='*'):
@@ -53,10 +50,9 @@ class Database():
         return self.composerCache
 
     def insertComposer(self, composer):
-        print(composer)
-        # self.cur.execute("""INSERT INTO composer (commmonname, fullname, dateofbirth, dateofdeath, nationality, style)
-        # VALUES (%(commonname)s, %(fullname)s, %(dateofbirth)s, %(dateofdeath)s, %(nationality)s, %(style)s);""",
-        # composer)
+        self.cur.execute("""INSERT INTO composer (commonname, fullname, dateofbirth, dateofdeath, nationality, style)
+        VALUES (%(name)s, %(fullname)s, %(dateofbirth)s, %(dateofdeath)s, %(nationality)s, %(style)s);""",
+        composer)
         self.updateComposerTable = True
 
     def __del__(self):
@@ -65,5 +61,6 @@ class Database():
 
 
 if __name__ == "__main__":
-    database = Database()
-    rows = database.getAllMusicSheet()
+    date = ''
+    date = date if date is not None else None
+    print(date)

@@ -9,8 +9,8 @@
     <h1>Compositeurs</h1>
 
     <!-- Button to toggle the form -->
-    <button onclick="toggleForm()">Ajouter un compositeur</button>
-    <div style="display:none" id="composerForm" class="formContainer">
+    <button onclick="toggleForm()"><span>Ajouter un compositeur</span></button>
+    <div style="display:none" id="form" class="formContainer">
         % include('composerForm.tpl')
     </div>
     <br>
@@ -45,16 +45,7 @@
         </table>
     </div>
 
-    <script>
-        function toggleForm() {
-            const element = document.getElementById("composerForm");
-            if (element.style.display === "none") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

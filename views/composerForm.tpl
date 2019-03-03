@@ -1,9 +1,9 @@
 <form action="/composers" method="POST">
     <label for="name">Nom: </label>
-    <input type="text" id="name" name="name"><br>
+    <input type="text" id="name" name="name" required><br>
 
     <label for="fullname">Nom entier: </label>
-    <input type="text" id="fullname" name="fullname"><br>
+    <input type="text" id="fullname" name="fullname" required><br>
 
     <label for="dateOfBirth">Date de naissance: </label>
     <input type="date" id="dateOfBirth" name="dateOfBirth">
@@ -12,7 +12,7 @@
     <input type="date" id="dateOfDeath" name="dateOfDeath"><br>
 
     <label for="nationality">Nationalité: </label>
-    <input type="text" id="nationality" name="nationality"><br>
+    <input type="text" id="nationality" name="nationality" required><br>
 
     <label for="style">Style: </label>
     <input type="text" id="style" name="style"><br>
