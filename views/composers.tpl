@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Compositeurs</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -19,11 +20,11 @@
     <div class="containerTable">
         <table id="composerTable">
             <tr>
-                <th>Nom</th>
-                <th>Naissance</th>
-                <th>Décès</th>
-                <th>Nationalité</th>
-                <th>Style</th>
+                <th onclick="sortTable(0)">Nom</th>
+                <th onclick="sortTable(1)">Naissance</th>
+                <th onclick="sortTable(2)">Décès</th>
+                <th onclick="sortTable(3)">Nationalité</th>
+                <th onclick="sortTable(4)">Style</th>
             </tr>
             % for item in composersArray:
                 <tr>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <title>Partitions</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -31,19 +31,19 @@
                 <th onclick="sortTable(6)">Commentaires</th>
             </tr>
             % for item in musicSheetsArray:
-                <tr>
-                    <td>{{item['title']}}</td>
-                    <td>{{item['commonname']}}</td>
-                    <td>{{item['type']}}</td>
-                    % if item['dateofcreation'] != None:
-                        <td>{{item['dateofcreation'].year}}</td>
-                    % else:
-                        <td>-</td>
-                    % end
-                    <td>{{item['difficulty']}}</td>
-                    <td>{{item['appreciation']}}</td>
-                    <td>{{item['comments']}}</td>
-                </tr>
+            <tr>
+                <td>{{item['title']}}</td>
+                <td>{{item['commonname']}}</td>
+                <td>{{item['type']}}</td>
+                % if item['dateofcreation'] != None:
+                    <td>{{item['dateofcreation'].year}}</td>
+                % else:
+                    <td>-</td>
+                % end
+                <td>{{item['difficulty']}}</td>
+                <td>{{item['appreciation']}}</td>
+                <td>{{item['comments']}}</td>
+            </tr>
             % end
         </table>
     </div>

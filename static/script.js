@@ -29,20 +29,18 @@ const sortByInput = () => {
     }
 }
 
-const quickSort = (array) => {
-    if (array.length <= 1) return array;
-    const left = [];
-    const right = [];
-    const pivot = array.shift();
-    while (array.length) array[0] < pivot ? left.push(array.shift()) : right.push(array.shift());
-    return quickSort(left).concat(pivot).concat(quickSort(right));
-}
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
 
 // Sort the tables by the clicked column - Bubble sort
 const sortTable = (column) => {
-    const table = document.getElementById('sheetTable');
-    const rows = table.getElementsByTagName("tr");
+    const page = document.getElementsByTagName("title")[0].textContent;
+    const table = document.getElementById((page === "Partitions") ? "sheetTable" : "composerTable");
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparer(column, this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr) );
 
-    quicksort(rows);
 }
-
