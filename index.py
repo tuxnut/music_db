@@ -1,8 +1,14 @@
 from bottle import Bottle, run, template, debug, request, redirect, static_file, error
-from Database import Database
+from PostgreSQLDb import PostgreSQLDb
+from LocalDatabase import LocalDatabase
+
+try:
+    db = PostgreSQLDb()
+except:
+    print("Unable to reach database 'Music' at 'postgres@localhost:5432'")
+    db = LocalDatabase()
 
 app = Bottle()
-db = Database()
 
 @app.route('/')
 @app.route('/sheets')

@@ -1,7 +1,8 @@
+from BaseDatabase import BaseDatabase
 import psycopg2
 import psycopg2.extras
 
-class Database():
+class PostgreSQLDb(BaseDatabase):
     def __init__(self):
         # Booleans to query database
         self.updateComposerTable = True
@@ -56,8 +57,10 @@ class Database():
         self.updateComposerTable = True
 
     def __del__(self):
-        self.cur.close()
-        self.conn.close()
+        if (hasattr(self, 'cur')):
+            self.cur.close()
+        if (hasattr(self, 'conn')):
+            self.conn.close()
 
 
 if __name__ == "__main__":

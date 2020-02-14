@@ -35,7 +35,7 @@
                 <td>{{item['title']}}</td>
                 <td>{{item['commonname']}}</td>
                 <td>{{item['type']}}</td>
-                % if item['dateofcreation'] != None:
+                % if hasattr(item, 'dateofcreation'):
                     <td>{{item['dateofcreation'].year}}</td>
                 % else:
                     <td>-</td>

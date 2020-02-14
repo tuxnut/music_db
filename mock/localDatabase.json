@@ -1,0 +1,50 @@
+{
+    "musicSheets": [
+        {
+            "title": "Concerto pour clarinette en la majeur K 622",
+            "commonname": "W.A.Mozart",
+            "type": "Concerto",
+            "dateofcreation": { "year": 1791 },
+            "difficulty": 3,
+            "appreciation": 4,
+            "comments": ""
+        },        
+        {
+            "title": "Rhapsody in blue",
+            "commonname": "G.Gershwin",
+            "type": "Jazz-Classique",
+            "dateofcreation": { "year": 1924 },
+            "difficulty": 3,
+            "appreciation": 5,
+            "comments": "Trait d'introduction particulièrement difficile (glissando)"
+        },
+        {
+            "title": "Solo de concours",
+            "commonname": "A.Messager",
+            "type": "Clarinette & piano",
+            "difficulty": 4,
+            "appreciation": 4,
+            "comments": ""
+        }
+    ],
+    "composers": [
+        {
+            "composer_id": 0,
+            "commonname": "W.A.Mozart",
+            "fullname": "Wolgang Amadeus Mozart",
+            "dateofbirth": "1756-01-27",
+            "dateofdeath": "1791-12-05",
+            "nationality": "Autrichien",
+            "style": "Classique"
+        },
+        {
+            "composer_id": 1,
+            "commonname": "G.Gershwin",
+            "fullname": "George Gershwin",
+            "dateofbirth": "1898-09-26",
+            "dateofdeath": "1937-07-11",
+            "nationality": "Américain",
+            "style": "Modernisme classique, Broadway"
+        }
+    ]
+}
