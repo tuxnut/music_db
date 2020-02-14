@@ -17,7 +17,6 @@
         % include('sheetForm.tpl', composersArray=composersArray)
     </div>
     <br>
-    <hr>
     <br>
     <div class="containerTable">
         <table id="sheetTable">

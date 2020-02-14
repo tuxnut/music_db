@@ -15,7 +15,6 @@
         % include('composerForm.tpl')
     </div>
     <br>
-    <hr>
     <br>
     <div class="containerTable">
         <table id="composerTable">
