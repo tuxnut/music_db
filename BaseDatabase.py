@@ -1,10 +1,10 @@
 class BaseDatabase:
-    def getAllMusicSheet(self, column=''):
-        print("getAllMusicSheet is not implemented !")
+    def getAllMusicScore(self, column=''):
+        print("getAllMusicScore is not implemented !")
         pass
 
-    def insertMusicSheet(self, musicSheet):
-        print("insertMusicSheet is not implemented !")
+    def insertMusicScore(self, musicScore):
+        print("insertMusicScore is not implemented !")
         pass
 
     def getAllComposers(self, column='*'):

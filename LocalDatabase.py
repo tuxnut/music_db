@@ -5,23 +5,23 @@ class LocalDatabase:
         print("Database is local")
         with open('./mock/localDatabase.json', 'r') as file:
             content = json.load(file)
-        self.musicSheetsList = content['musicSheets']
+        self.musicScoreList = content['musicScores']
         self.composersList = content['composers']
         self.composerInc = len(self.composersList)
 
-    def getAllMusicSheet(self, column=''):
-        return self.musicSheetsList
+    def getAllMusicScore(self, column=''):
+        return self.musicScoreList
 
-    def insertMusicSheet(self, musicSheet):
-        jsonMusicSheet = {}
-        jsonMusicSheet['title'] = musicSheet['title']
-        jsonMusicSheet['commonname'] = self.composersList[int(musicSheet['composer'])]['commonname']
-        jsonMusicSheet['type'] = musicSheet['type']
-        jsonMusicSheet['dateofcreation'] = musicSheet['dateofcreation']
-        jsonMusicSheet['difficulty'] = musicSheet['difficulty']
-        jsonMusicSheet['appreciation'] = musicSheet['appreciation']
-        jsonMusicSheet['comments'] = musicSheet['comments']
-        self.musicSheetsList.append(jsonMusicSheet)
+    def insertMusicScore(self, musicScore):
+        jsonMusicScore = {}
+        jsonMusicScore['title'] = musicScore['title']
+        jsonMusicScore['commonname'] = self.composersList[int(musicScore['composer'])]['commonname']
+        jsonMusicScore['type'] = musicScore['type']
+        jsonMusicScore['dateofcreation'] = musicScore['dateofcreation']
+        jsonMusicScore['difficulty'] = musicScore['difficulty']
+        jsonMusicScore['appreciation'] = musicScore['appreciation']
+        jsonMusicScore['comments'] = musicScore['comments']
+        self.musicScoreList.append(jsonMusicScore)
 
     def getAllComposers(self, column='*'):
         return self.composersList
@@ -40,5 +40,5 @@ class LocalDatabase:
 
 if __name__ == "__main__":
     db = LocalDatabase()
-    print(db.getAllMusicSheet())
+    print(db.getAllMusicScore())
     print(db.getAllComposers())

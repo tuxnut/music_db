@@ -1,4 +1,4 @@
- <form action="/sheets" method="POST">
+ <form action="/scores" method="POST">
     <label for="title">Titre: </label>
     <input type="text" id="title" name="title" required><br>
 

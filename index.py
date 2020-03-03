@@ -11,25 +11,25 @@ except:
 app = Bottle()
 
 @app.route('/')
-@app.route('/sheets')
+@app.route('/scores')
 def home():
-    musicSheetsArray = db.getAllMusicSheet()
+    musicScoresArray = db.getAllMusicScore()
     composersArray = db.getAllComposers()
     composersName = [{"id": composer['composer_id'], "name": composer['commonname']} for composer in composersArray]
-    return template('sheets', musicSheetsArray=musicSheetsArray, composersArray=composersName)
+    return template('scores', musicScoresArray=musicScoresArray, composersArray=composersName)
 
-@app.route('/sheets', method='post')
-def postMusicSheet():
-    musicSheet = {}
-    musicSheet["title"] = request.forms.title
-    musicSheet["composer"] = request.forms.composer_id
-    musicSheet["type"] = request.forms.type
-    musicSheet["dateofcreation"] = request.forms.get('dateOfCreation') if request.forms.get('dateOfCreation') is not None else None
-    musicSheet["difficulty"] = request.forms.get('difficulty')
-    musicSheet["appreciation"] = request.forms.get('appreciation')
-    musicSheet["comments"] = request.forms.comments
-    db.insertMusicSheet(musicSheet)
-    redirect("/sheets")
+@app.route('/scores', method='post')
+def postMusicScore():
+    musicScore = {}
+    musicScore["title"] = request.forms.title
+    musicScore["composer"] = request.forms.composer_id
+    musicScore["type"] = request.forms.type
+    musicScore["dateofcreation"] = request.forms.get('dateOfCreation') if request.forms.get('dateOfCreation') is not "" else None
+    musicScore["difficulty"] = request.forms.get('difficulty')
+    musicScore["appreciation"] = request.forms.get('appreciation')
+    musicScore["comments"] = request.forms.comments
+    db.insertMusicScore(musicScore)
+    redirect("/scores")
 
 @app.route('/composers', method='get')
 def composer():
@@ -41,8 +41,8 @@ def postComposer():
     composer = {}
     composer["name"] = request.forms.name
     composer["fullname"] = request.forms.fullname
-    composer["dateofbirth"] = request.forms.get('dateOfBirth') if request.forms.get('dateOfBirth') is not None else None
-    composer["dateofdeath"] = request.forms.get('dateOfDeath') if request.forms.get('dateOfDeath') is not None else None
+    composer["dateofbirth"] = request.forms.get('dateOfBirth') if request.forms.get('dateOfBirth') is not "" else None
+    composer["dateofdeath"] = request.forms.get('dateOfDeath') if request.forms.get('dateOfDeath') is not "" else None
     composer["nationality"] = request.forms.nationality
     composer["style"] = request.forms.style
     db.insertComposer(composer)

@@ -14,12 +14,12 @@
     <!-- Button to toggle the form -->
     <button onclick="toggleForm()"><span>Ajouter une partition</span></button>
     <div style="display:none" id="form" class="formContainer">
-        % include('sheetForm.tpl', composersArray=composersArray)
+        % include('scoreForm.tpl', composersArray=composersArray)
     </div>
     <br>
     <br>
     <div class="containerTable">
-        <table id="sheetTable">
+        <table id="scoreTable">
             <tr>
                 <th onclick="sortTable(0)">Titre</th>
                 <th onclick="sortTable(1)">Compositeur</th>
@@ -29,7 +29,7 @@
                 <th onclick="sortTable(5)">Appréciation</th>
                 <th onclick="sortTable(6)">Commentaires</th>
             </tr>
-            % for item in musicSheetsArray:
+            % for item in musicScoresArray:
             <tr>
                 <td>{{item['title']}}</td>
                 <td>{{item['commonname']}}</td>
