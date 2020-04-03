@@ -12,7 +12,7 @@
     <input type="date" id="dateOfDeath" name="dateOfDeath"><br>
 
     <label for="nationality">Nationalité: </label>
-    <input type="text" id="nationality" name="nationality" required><br>
+    <input type="text" id="nationality" name="nationality"><br>
 
     <label for="style">Style: </label>
     <input type="text" id="style" name="style"><br>

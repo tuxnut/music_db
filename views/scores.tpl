@@ -32,13 +32,9 @@
             % for item in musicScoresArray:
             <tr>
                 <td>{{item['title']}}</td>
-                <td>{{item['commonname']}}</td>
+                <td>{{item['composer']['commonname']}}</td>
                 <td>{{item['type']}}</td>
-                % if hasattr(item, 'dateofcreation'):
-                    <td>{{item['dateofcreation'].year}}</td>
-                % else:
-                    <td>-</td>
-                % end
+                <td>{{item['dateofcreation']}}</td>
                 <td>{{item['difficulty']}}</td>
                 <td>{{item['appreciation']}}</td>
                 <td>{{item['comments']}}</td>

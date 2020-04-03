@@ -9,7 +9,7 @@ class LocalDatabase:
         self.composersList = content['composers']
         self.composerInc = len(self.composersList)
 
-    def getAllMusicScore(self, column=''):
+    def getAllMusicScores(self, column=''):
         return self.musicScoreList
 
     def insertMusicScore(self, musicScore):

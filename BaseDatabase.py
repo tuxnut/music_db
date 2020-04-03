@@ -1,5 +1,5 @@
 class BaseDatabase:
-    def getAllMusicScore(self, column=''):
+    def getAllMusicScores(self, column=''):
         print("getAllMusicScore is not implemented !")
         pass
 

@@ -6,10 +6,10 @@
     <input type="text" id="type" name="type" required><br>
 
     <label for="composer">Compositeur: </label>
-    <select id="composer" name="composer_id" required>
+    <select id="composer" name="composerName" required>
         <option></option>
         % for item in composersArray:
-            <option value={{item['id']}}>{{item['name']}}</option>
+            <option value={{item['name']}}>{{item['name']}}</option>
         % end
     </select>
 

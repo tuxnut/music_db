@@ -1,19 +1,14 @@
 from bottle import Bottle, run, template, debug, request, redirect, static_file, error
-from PostgreSQLDb import PostgreSQLDb
 from LocalDatabase import LocalDatabase
+from DatabaseService import DatabaseService
 
-try:
-    db = PostgreSQLDb()
-except:
-    print("Unable to reach database 'Music' at 'postgres@localhost:5432'")
-    db = LocalDatabase()
-
+db = DatabaseService()
 app = Bottle()
 
 @app.route('/')
 @app.route('/scores')
 def home():
-    musicScoresArray = db.getAllMusicScore()
+    musicScoresArray = db.getAllMusicScores()
     composersArray = db.getAllComposers()
     composersName = [{"id": composer['composer_id'], "name": composer['commonname']} for composer in composersArray]
     return template('scores', musicScoresArray=musicScoresArray, composersArray=composersName)
@@ -22,7 +17,7 @@ def home():
 def postMusicScore():
     musicScore = {}
     musicScore["title"] = request.forms.title
-    musicScore["composer"] = request.forms.composer_id
+    musicScore["composerName"] = request.forms.composerName
     musicScore["type"] = request.forms.type
     musicScore["dateofcreation"] = request.forms.get('dateOfCreation') if request.forms.get('dateOfCreation') is not "" else None
     musicScore["difficulty"] = request.forms.get('difficulty')
@@ -39,7 +34,7 @@ def composer():
 @app.route('/composers', method='post')
 def postComposer():
     composer = {}
-    composer["name"] = request.forms.name
+    composer["commonname"] = request.forms.name
     composer["fullname"] = request.forms.fullname
     composer["dateofbirth"] = request.forms.get('dateOfBirth') if request.forms.get('dateOfBirth') is not "" else None
     composer["dateofdeath"] = request.forms.get('dateOfDeath') if request.forms.get('dateOfDeath') is not "" else None
