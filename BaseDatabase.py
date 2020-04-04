@@ -14,3 +14,11 @@ class BaseDatabase:
     def insertComposer(self, composer):
         print("insertComposer is not implemented !")
         pass
+
+    def updateComposer(self, key, composer):
+        print("updateComposer is not implemented !")
+        pass
+    
+    def deleteComposer(self, key):
+        print("deleteComposer is not implemented !")
+        pass

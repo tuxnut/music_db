@@ -25,6 +25,6 @@
     <label for="comments">Commentaires: </label>
     <input type="text" id="comments" name="comments"><br>
 
-    <input type="reset" value="Reset">
-    <input type="submit">
+    <input type="reset" value="Reset" class="clickable">
+    <input type="submit" class="clickable">
 </form>

@@ -43,6 +43,19 @@ def postComposer():
     db.insertComposer(composer)
     redirect("/composers")
 
+@app.route('/updateComposer', method='post')
+def updateComposer():
+    composer = {}
+    composerKey = request.forms.key
+    composer["commonname"] = request.forms.name
+    composer["fullname"] = request.forms.fullname
+    composer["dateofbirth"] = request.forms.get('dateOfBirth') if request.forms.get('dateOfBirth') is not "" else None
+    composer["dateofdeath"] = request.forms.get('dateOfDeath') if request.forms.get('dateOfDeath') is not "" else None
+    composer["nationality"] = request.forms.nationality
+    composer["style"] = request.forms.style
+    db.updateComposer(key=composerKey, composer=composer)
+    redirect("/composers")
+
 @app.route('/<filename:path>')
 def static(filename):
     print()

@@ -32,6 +32,12 @@ class DatabaseService(BaseDatabase):
 
     def insertComposer(self, composer):
         response = requests.post(self.BASE_URL + self.COMPOSERS_ROUTE, json=composer)
+
+    def updateComposer(self, key, composer):
+        response = requests.put(self.BASE_URL + self.COMPOSERS_ROUTE + "/" + key, json=composer)
+
+    def deleteComposer(self, key):
+        print("deleteComposer is not implemented !")
         
 
 if __name__ == '__main__':

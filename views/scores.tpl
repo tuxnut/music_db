@@ -12,7 +12,7 @@
     <input type="text" id="search_bar" name="search" placeholder="Search.." oninput="sortByInput()"><br>
 
     <!-- Button to toggle the form -->
-    <button onclick="toggleForm()"><span>Ajouter une partition</span></button>
+    <button onclick="toggleForm()" id="toggleFormButton"><span>Ajouter une partition</span></button>
     <div style="display:none" id="form" class="formContainer">
         % include('scoreForm.tpl', composersArray=composersArray)
     </div>

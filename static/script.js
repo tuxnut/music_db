@@ -44,3 +44,28 @@ const sortTable = (column) => {
         .forEach(tr => table.appendChild(tr) );
 
 }
+
+const handleEditComposer = (serializedItem) => {
+    composer = JSON.parse(serializedItem);
+    const container = document.getElementById('editionForm');
+    
+    container.children.namedItem('key').value = composer.commonname;
+    container.children.namedItem('name').value = composer.commonname;    
+    container.children.namedItem('fullname').value = composer.fullname;
+    container.children.namedItem('dateOfBirth').value = composer.dateofbirth;
+    container.children.namedItem('dateOfDeath').value = composer.dateofdeath;
+    container.children.namedItem('nationality').value = composer.nationality;
+    container.children.namedItem('style').value = composer.style;
+
+    document.getElementById('editComposer').style.display ='block';
+}
+
+// Get the modal
+const modal = document.getElementById('editComposer');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = (event) => {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
