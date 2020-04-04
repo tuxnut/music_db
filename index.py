@@ -56,9 +56,14 @@ def updateComposer():
     db.updateComposer(key=composerKey, composer=composer)
     redirect("/composers")
 
+@app.route('/deleteComposer', method='post')
+def deleteComposer():
+    composerKey = request.forms.key
+    db.deleteComposer(composerKey)
+    redirect("/composers")
+
 @app.route('/<filename:path>')
 def static(filename):
-    print()
     return static_file(filename, root='static/')
 
 @error(404)

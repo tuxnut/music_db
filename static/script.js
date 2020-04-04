@@ -57,15 +57,25 @@ const handleEditComposer = (serializedItem) => {
     container.children.namedItem('nationality').value = composer.nationality;
     container.children.namedItem('style').value = composer.style;
 
-    document.getElementById('editComposer').style.display ='block';
+    document.getElementById('edit').style.display ='block';
 }
 
-// Get the modal
-const modal = document.getElementById('editComposer');
+const handleDeleteComposer = (itemName) => {
+    const container = document.getElementById('deletionForm');
+    
+    container.children.namedItem('namePlaceHolder').textContent = itemName;
+    container.children.namedItem('key').value = itemName;
 
-// When the user clicks anywhere outside of the modal, close it
+    document.getElementById('delete').style.display ='block';
+}
+
+// Get the modals
+const modalEdit = document.getElementById('edit');
+const modalDelete = document.getElementById('delete');
+
+// When the user clicks anywhere outside of the modals, close it
 window.onclick = (event) => {
-    if (event.target == modal) {
+    if ((event.target == modalEdit) || (event.target == modalDelete)) {
         modal.style.display = "none";
     }
 }
