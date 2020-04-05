@@ -3,7 +3,7 @@ import json
 class LocalDatabase:
     def __init__(self):
         print("Database is local")
-        with open('./mock/localDatabase.json', 'r') as file:
+        with open('../mock/localDatabase.json', 'r') as file:
             content = json.load(file)
         self.musicScoreList = content['musicScores']
         self.composersList = content['composers']

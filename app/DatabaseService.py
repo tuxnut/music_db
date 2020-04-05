@@ -6,7 +6,7 @@ from BaseDatabase import BaseDatabase
 class DatabaseService(BaseDatabase):
     def __init__(self):
         super().__init__()
-        self.BASE_URL = os.getenv("BASE_URL")
+        self.BASE_URL = "http://" + os.getenv("DB_BASE_URL")
         self.SCORES_ROUTE = "musicscores"
         self.COMPOSERS_ROUTE = "composers"
 

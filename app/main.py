@@ -1,5 +1,4 @@
 from bottle import Bottle, run, template, debug, request, redirect, static_file, error
-from LocalDatabase import LocalDatabase
 from DatabaseService import DatabaseService
 
 db = DatabaseService()
