@@ -8,7 +8,7 @@ const toggleForm = () => {
     }
 }
 
-// Filter musicScore by title
+// Filter musicScore by title and or composer
 const sortByInput = () => {
     const input = document.getElementById("search_bar");
     const filter = input.value.toUpperCase();
@@ -18,9 +18,11 @@ const sortByInput = () => {
     // loop through table rows, hide the ones that does not match the input
     for (let i = 0; i < rows.length; ++i) {
         const scoreTitle = rows[i].getElementsByTagName("td")[0];
-        if (scoreTitle) {
+        const composerName = rows[i].getElementsByTagName("td")[1];
+        if (scoreTitle && composerName) {
             let titleValue = scoreTitle.textContent || scoreTitle.innerText;
-            if (titleValue.toUpperCase().indexOf(filter) > -1) {
+            let composerNameValue = composerName.textContent || composerName.innerText;
+            if ((titleValue.toUpperCase().indexOf(filter) > -1) || (composerNameValue.toUpperCase().indexOf(filter) > -1)) {
                 rows[i].style.display = "";
             } else {
                 rows[i].style.display = "none";
