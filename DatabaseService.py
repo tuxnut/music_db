@@ -20,6 +20,12 @@ class DatabaseService(BaseDatabase):
 
     def insertMusicScore(self, musicScore):
         response = requests.post(self.BASE_URL + self.SCORES_ROUTE, json=musicScore)
+        
+    def updateMusicScore(self, key, musicScore):
+        response = requests.put(self.BASE_URL + self.SCORES_ROUTE + "/" + key, json=musicScore)
+    
+    def deleteMusicScore(self, key):
+        response = requests.delete(self.BASE_URL + self.SCORES_ROUTE + "/" + key)
 
     def getAllComposers(self, column='*'):
         response = requests.get(self.BASE_URL + self.COMPOSERS_ROUTE)

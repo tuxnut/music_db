@@ -69,6 +69,40 @@ const handleDeleteComposer = (itemName) => {
     document.getElementById('delete').style.display ='block';
 }
 
+
+const handleEditScore = (serializedItem) => {
+    musicScore = JSON.parse(serializedItem);
+    const container = document.getElementById('editionForm');
+    
+    container.children.namedItem('key').value = musicScore.title;
+    container.children.namedItem('title').value = musicScore.title;
+    container.children.namedItem('type').value = musicScore.type;
+    container.children.namedItem('dateOfCreation').value = `${musicScore.dateofcreation}-01-01`;
+    container.children.namedItem('difficulty').value = musicScore.difficulty;
+    container.children.namedItem('appreciation').value = musicScore.appreciation;
+    container.children.namedItem('comments').value = musicScore.comments;
+    
+    let composerSelect = container.children.namedItem('composerName')
+
+    for (let option, i = 0; option = composerSelect.options[i]; i++) {
+        if(option.value == musicScore.composer.commonname) {
+            composerSelect.selectedIndex = i;
+            break;
+        }
+    }
+    
+    document.getElementById('edit').style.display ='block';
+}
+
+const handleDeleteScore = (itemTitle) => {
+    const container = document.getElementById('deletionForm');
+    
+    container.children.namedItem('namePlaceHolder').textContent = itemTitle;
+    container.children.namedItem('key').value = itemTitle;
+
+    document.getElementById('delete').style.display ='block';
+}
+
 // Get the modals
 const modalEdit = document.getElementById('edit');
 const modalDelete = document.getElementById('delete');

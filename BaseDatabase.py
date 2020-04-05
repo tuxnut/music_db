@@ -7,6 +7,14 @@ class BaseDatabase:
         print("insertMusicScore is not implemented !")
         pass
 
+    def updateMusicScore(self, key, musicScore):
+        print("updateMusicScore is not implemented !")
+        pass
+    
+    def deleteMusicScore(self, key):
+        print("deleteMusicScore is not implemented !")
+        pass
+
     def getAllComposers(self, column='*'):
         print("getAllComposers is not implemented !")
         pass

@@ -26,6 +26,26 @@ def postMusicScore():
     db.insertMusicScore(musicScore)
     redirect("/scores")
 
+@app.route('/updateScore', method='post')
+def updateScore():
+    musicScore = {}
+    scoreKey = request.forms.key
+    musicScore["title"] = request.forms.title
+    musicScore["composerName"] = request.forms.composerName
+    musicScore["type"] = request.forms.type
+    musicScore["dateofcreation"] = request.forms.get('dateOfCreation') if request.forms.get('dateOfCreation') is not "" else None
+    musicScore["difficulty"] = request.forms.get('difficulty')
+    musicScore["appreciation"] = request.forms.get('appreciation')
+    musicScore["comments"] = request.forms.comments
+    db.updateMusicScore(key=scoreKey, musicScore=musicScore)
+    redirect("/scores")
+
+@app.route('/deleteScore', method='post')
+def deleteScore():
+    scoreKey = request.forms.key
+    db.deleteMusicScore(scoreKey)
+    redirect("/scores")
+
 @app.route('/composers', method='get')
 def composer():
     composersArray = db.getAllComposers()
