@@ -47,8 +47,12 @@ class DatabaseService(BaseDatabase):
         response = requests.delete(self.BASE_URL + self.COMPOSERS_ROUTE + "/" + key)
         
 
-def computeSheetName(id, title, composer):
+def computeScoreName(id, title, composer):
     return "%d-%s-%s.pdf" % (id, title.replace(' ', '_'), composer.replace(' ', '_'))
+
+def isScorePresent(id, title, composer):
+    fileName = computeScoreName(id, title, composer)
+    return os.path.exists("static/sheets/" + fileName)
 
 if __name__ == '__main__':
     db = DatabaseService()
