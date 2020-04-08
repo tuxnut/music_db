@@ -13,3 +13,5 @@ start.sh
 .vscode
 
 old
+
+app/static/sheets/*

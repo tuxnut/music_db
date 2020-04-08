@@ -47,6 +47,9 @@ class DatabaseService(BaseDatabase):
         response = requests.delete(self.BASE_URL + self.COMPOSERS_ROUTE + "/" + key)
         
 
+def computeSheetName(id, title, composer):
+    return "%d-%s-%s.pdf" % (id, title.replace(' ', '_'), composer.replace(' ', '_'))
+
 if __name__ == '__main__':
     db = DatabaseService()
     data = db.getAllComposers()
