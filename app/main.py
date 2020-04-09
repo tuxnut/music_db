@@ -1,5 +1,5 @@
 from bottle import Bottle, run, template, debug, request, redirect, static_file, error
-from DatabaseService import DatabaseService
+from DatabaseService import DatabaseService, retrieveFamilyName
 
 db = DatabaseService()
 app = Bottle()
@@ -9,7 +9,8 @@ app = Bottle()
 def home():
     musicScoresArray = db.getAllMusicScores()
     composersArray = db.getAllComposers()
-    composersName = [{"id": composer['composer_id'], "name": composer['commonname']} for composer in composersArray]
+    composersName = [composer['commonname'] for composer in composersArray]
+    composersName.sort(key=retrieveFamilyName)
     return template('scores', musicScoresArray=musicScoresArray, composersArray=composersName)
 
 @app.route('/composers', method='get')
@@ -37,5 +38,4 @@ def static(filename):
 def error404(error):
     return "Nope"
 
-debug(True)
-run(app, host='0.0.0.0', port=8080, reloader=True)
+run(app, host='0.0.0.0', port=8080)

@@ -38,14 +38,31 @@ const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx]
 
 const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
     v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
-    )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
-
+)(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+    
 // Sort the tables by the clicked column - Bubble sort
 const sortTable = (column) => {
     const page = document.getElementsByTagName("title")[0].textContent;
     const table = document.getElementById((page === "Partitions") ? "scoreTable" : "composerTable");
     Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
-        .sort(comparer(column, this.asc = !this.asc))
-        .forEach(tr => table.appendChild(tr) );
+    .sort(comparer(column, this.asc = !this.asc))
+    .forEach(tr => table.appendChild(tr));
+}
 
+const getFamilyName = (tr, idx) => {
+    content = tr.children[idx].innerText || tr.children[idx].textContent;
+    const split = content.split(' ');
+    return split[split.length - 1];
+}
+
+const comparerByName = (idx, asc) => (a, b) => ((v1, v2) => 
+    v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+)(getFamilyName(asc ? a : b, idx), getFamilyName(asc ? b : a, idx));
+
+const sortTableByFamilyName = (column) => {
+    const page = document.getElementsByTagName("title")[0].textContent;
+    const table = document.getElementById((page === "Partitions") ? "scoreTable" : "composerTable");
+    Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+        .sort(comparerByName(column, this.asc = !this.asc))
+        .forEach(tr => table.appendChild(tr));
 }

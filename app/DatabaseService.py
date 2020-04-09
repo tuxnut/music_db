@@ -54,8 +54,6 @@ def isScorePresent(id, title, composer):
     fileName = computeScoreName(id, title, composer)
     return os.path.exists("static/sheets/" + fileName)
 
-if __name__ == '__main__':
-    db = DatabaseService()
-    data = db.getAllComposers()
-    print(data)
-    
+def retrieveFamilyName(fullName):
+    split = fullName.split(' ')
+    return split[len(split) - 1]
