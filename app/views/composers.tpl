@@ -23,7 +23,7 @@
     <div class="containerTable">
         <table id="composerTable">
             <tr>
-                <th class="clickable" onclick="sortTable(0)">Nom</th>
+                <th class="clickable" onclick="sortTableByFamilyName(0)">Nom</th>
                 <th class="clickable" onclick="sortTable(1)">Naissance</th>
                 <th class="clickable" onclick="sortTable(2)">Décès</th>
                 <th class="clickable" onclick="sortTable(3)">Nationalité</th>

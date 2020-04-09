@@ -8,7 +8,7 @@
 <select id="composer" name="composerName" required>
     <option></option> <!-- Blank by default -->
     % for item in composersArray:
-        <option value='{{item['name']}}'>{{item['name']}}</option>
+        <option value='{{item}}'>{{item}}</option>
     % end
 </select>
 

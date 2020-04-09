@@ -28,7 +28,7 @@
             <tr>
                 <th></th>
                 <th class="clickable" onclick="sortTable(1)">Titre</th>
-                <th class="clickable" onclick="sortTable(2)">Compositeur</th>
+                <th class="clickable" onclick="sortTableByFamilyName(2)">Compositeur</th>
                 <th class="clickable" onclick="sortTable(3)">Type</th>
                 <th class="clickable" onclick="sortTable(4)">Date de composition</th>
                 <th class="clickable" onclick="sortTable(5)">Difficulté</th>
