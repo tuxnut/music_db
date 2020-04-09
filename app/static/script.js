@@ -7,12 +7,12 @@ const s_appreciationColumn   = 6;
 const s_commentColumn        = 7;
 const s_actionColumn         = 8;
 
-const c_fullNameColum        = 1;
-const c_birthColum           = 2;
-const c_deathColum           = 3;
-const c_nationalityColum     = 4;
-const c_styleColum           = 5;
-const c_actionColumn         = 6;
+const c_fullNameColum        = 0;
+const c_birthColum           = 1;
+const c_deathColum           = 2;
+const c_nationalityColum     = 3;
+const c_styleColum           = 4;
+const c_actionColumn         = 5;
 
 // Display / Hide the forms to add a musicScore / composer
 const toggleForm = () => {
@@ -112,19 +112,11 @@ const handleEditScore = (serializedItem) => {
     container.children.namedItem('key').value = musicScore.title;
     container.children.namedItem('title').value = musicScore.title;
     container.children.namedItem('type').value = musicScore.type;
+    container.children.namedItem('composerName').value = musicScore.composer.commonname
     container.children.namedItem('dateOfCreation').value = `${musicScore.dateofcreation}-01-01`;
     container.children.namedItem('difficulty').value = musicScore.difficulty;
     container.children.namedItem('appreciation').value = musicScore.appreciation;
     container.children.namedItem('comments').value = musicScore.comments;
-    
-    let composerSelect = container.children.namedItem('composerName')
-
-    for (let option, i = 0; option = composerSelect.options[i]; i++) {
-        if(option.value == musicScore.composer.commonname) {
-            composerSelect.selectedIndex = i;
-            break;
-        }
-    }
     
     document.getElementById('edit').style.display ='block';
 }

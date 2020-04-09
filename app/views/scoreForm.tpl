@@ -5,15 +5,15 @@
 <input type="text" id="type" name="type" required><br>
 
 <label for="composer">Compositeur: </label>
-<select id="composer" name="composerName" required>
-    <option></option> <!-- Blank by default -->
-    % for item in composersArray:
-        <option value='{{item}}'>{{item}}</option>
-    % end
-</select>
+<input type="text" id="composer" name="composerName" list="composerNames" required>
+    <datalist id="composerNames">
+        % for item in composersArray:
+            <option value='{{item}}'>{{item}}</option>
+        % end
+    </datalist>
 
 <label for="dateOfCreation">Date de composition: </label>
-<input type="date" id="dateOfCreation" name="dateOfCreation"><br>
+<input type="date" id="dateOfCreation" name="dateOfCreation">
 
 <label for="difficulty">Difficulté: </label>
 <input type="range" min="1" max="5" id="difficulty" name="difficulty" required>
