@@ -19,7 +19,12 @@
             </tr>
             % for item in composersArray:
                 <tr>
-                    <td>{{item['fullname']}}</td>
+                    <td>
+                        <div class="tooltip">
+                            {{item['fullname']}}
+                            <span class="tooltiptext">{{item['commonname']}}</span>
+                        </div>
+                    </td>
                     % if item['dateofbirth'] != None:
                         <td>{{item['dateofbirth']}}</td>
                     % else:
