@@ -1,3 +1,19 @@
+const s_titleColumn          = 1;
+const s_composerNameColumn   = 2;
+const s_typeColumn           = 3;
+const s_creationDateColumn   = 4;
+const s_difficultyColumn     = 5;
+const s_appreciationColumn   = 6;
+const s_commentColumn        = 7;
+const s_actionColumn         = 8;
+
+const c_fullNameColum        = 1;
+const c_birthColum           = 2;
+const c_deathColum           = 3;
+const c_nationalityColum     = 4;
+const c_styleColum           = 5;
+const c_actionColumn         = 6;
+
 // Display / Hide the forms to add a musicScore / composer
 const toggleForm = () => {
     const element = document.getElementById("form");
@@ -17,8 +33,8 @@ const sortByInput = () => {
 
     // loop through table rows, hide the ones that does not match the input
     for (let i = 0; i < rows.length; ++i) {
-        const scoreTitle = rows[i].getElementsByTagName("td")[0];
-        const composerName = rows[i].getElementsByTagName("td")[1];
+        const scoreTitle = rows[i].getElementsByTagName("td")[s_titleColumn];
+        const composerName = rows[i].getElementsByTagName("td")[s_composerNameColumn];
         if (scoreTitle && composerName) {
             let titleValue = scoreTitle.textContent || scoreTitle.innerText;
             let composerNameValue = composerName.textContent || composerName.innerText;
