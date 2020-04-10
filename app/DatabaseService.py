@@ -1,6 +1,7 @@
 import requests
 import datetime
 import os
+import glob
 from BaseDatabase import BaseDatabase
 
 class DatabaseService(BaseDatabase):
@@ -46,14 +47,10 @@ class DatabaseService(BaseDatabase):
     def deleteComposer(self, key):
         response = requests.delete(self.BASE_URL + self.COMPOSERS_ROUTE + "/" + key)
         
-
-def computeScoreName(id, title, composer):
-    return "%d-%s-%s.pdf" % (id, title.replace(' ', '_'), composer.replace(' ', '_'))
-
-def isScorePresent(id, title, composer):
-    fileName = computeScoreName(id, title, composer)
-    return os.path.exists("static/sheets/" + fileName)
-
 def retrieveFamilyName(fullName):
     split = fullName.split(' ')
     return split[len(split) - 1]
+
+def computeScorePresence(id, title, composer):
+    baseFileName = "%d-%s-%s" % (id, title.replace(' ', '_'), composer.replace(' ', '_'))
+    return [file.lstrip('static/sheets/') for file in glob.glob("static/sheets/" + baseFileName + "*")]
